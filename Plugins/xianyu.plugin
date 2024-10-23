@@ -21,30 +21,29 @@ DOMAIN, ta.pinduoduo.com, REJECT
 DOMAIN, th-a.pinduoduo.com, REJECT
 DOMAIN, th-b.pinduoduo.com, REJECT
 DOMAIN, th.pinduoduo.com, REJECT
-
+#淘宝
+DOMAIN,adashx.m.taobao.com,REJECT
+DOMAIN,ossgw.alicdn.com,REJECT
+DOMAIN,ems.youku.com,REJECT
+DOMAIN,hudong.alicdn.com,REJECT
+DOMAIN,h-adashx.ut.taobao.com,REJECT
+DOMAIN,ut.taobao.com,REJECT
 
 [Rewrite]
 # 首页顶部标签
 ^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idle\.home\.whale\.modulet\/ reject-dict
-
 # 商品详情为你推荐
 ^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idle\.item\.recommend\.list\/ reject-dict
-
 # 这些宝贝超好卖
 ^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idle\.item\.resell\.recommendorhotcate\/ reject-dict
-
 # 消息列表推广
 ^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idle\.playboy\.recommend\/ reject-dict
-
 # 我的页面
 ^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idle\.topic\.banner\/ reject-dict
-
 # 首页动画样式
 ^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idle\.user\.strategy\.list\/ reject-dict
-
 # 用闲鱼币买更便宜
 ^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idlehome\.idle\.coin\.nextfresh\/ reject-dict
-
 # 搜索列表
 ^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idlemtopsearch\.search\.discover\/ reject-dict
 ^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idlemtopsearch\.search\.shade\/ reject-dict
@@ -64,23 +63,34 @@ DOMAIN, th.pinduoduo.com, REJECT
 ^https:\/\/api\.pinduoduo\.com\/api\/zaire_biz\/chat\/resource\/get_list_data reject-dict
 ^https:\/\/api\.pinduoduo\.com\/search response-body-json-del expansion
 ^https:\/\/api\.pinduoduo\.com\/search_hotquery\? reject-dict
+#淘宝
+^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.fliggy\.crm\.screen\.(allresource|predict) reject-dict
+^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.alibaba\.advertisementservice\.getadv reject-dict
+^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.alimama\.etao\.config\.query\/.+?etao_advertise reject-dict
+^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.alimusic\.common\.mobileservice\.startinit reject-dict
+^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.etao\.noah\.query\/.+tao_splash reject-dict
+^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.film\.mtopadvertiseapi\.queryadvertise reject-dict
+^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.o2o\.ad\.gateway\.get reject-dict
+^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.taobao\.idle\.home\.welcome reject-dict
+^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.trip\.activity\.querytmsresources reject-dict
+^https:\/\/heic\.alicdn\.com\/imgextra\/i\d\/\d*\/?[\w!]+-\d-(octopus|tps-1125-1602|tps-1080-1920)\.(jp|pn)g_(1\d{3}|9\d{2})x(1\d{3}|9\d{2})q[59]0 reject-dict
+^https:\/\/guide-acs\.m\.taobao\.com\/gw\/mtop\.taobao\.(volvo\.secondfloor\.getconfig|wireless\.home\.newface\.awesome\.get) reject-dict
 
 [Script]
 # 我的页面
 http-response ^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.idle\.user\.page\.my\.adapter\/ script-path = https://raw.githubusercontent.com/bhcmht001/L00n/refs/heads/main/Scripts/xianyu.js, requires-body = true, tag = 移除我的页面推广
-
 # 首页信息流
 http-response ^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idlehome\.home\.nextfresh\/ script-path = https://raw.githubusercontent.com/bhcmht001/L00n/refs/heads/main/Scripts/xianyu.js, requires-body = true, tag = 移除首页信息流推广
-
 # 首页顶部标签
 http-response ^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idlehome\.home\.circle\.list\/ script-path = https://raw.githubusercontent.com/bhcmht001/L00n/refs/heads/main/Scripts/xianyu.js, requires-body = true, tag = 移除首页顶部标签推广
-
 # 搜索结果广告
 http-response ^https:\/\/g-acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idlemtopsearch\.search\/ script-path = https://raw.githubusercontent.com/bhcmht001/L00n/refs/heads/main/Scripts/xianyu.js, requires-body = true, tag = 移除搜索结果广告
-
 # 拼多多
 http-response ^https:\/\/api\.pinduoduo\.com\/api\/alexa\/homepage\/hub\? script-path = https://raw.githubusercontent.com/bhcmht001/L00n/refs/heads/main/Scripts/pdd.js, requires-body = true, tag = 精简首页
+# 淘宝
+http-response ^https:\/\/guide-acs\.m\.taobao\.com\/gw\/mtop\.taobao\.(cloudvideo\.video\.query|wireless\.home\.splash\.awesome\.get) script-path=https://kelee.one/Resource/Script/Taobao/Taobao_remove_ads.js, requires-body=true, tag=移除淘宝开屏广告
+http-response ^https:\/\/poplayer\.template\.alibaba\.com\/\w+\.json script-path=https://kelee.one/Resource/Script/Taobao/Taobao_remove_ads.js, requires-body=true, tag=移除淘宝开屏广告
 
 [MITM]
-hostname = *.m.goofish.com, api.pinduoduo.com, api.yangkeduo.com
+hostname = *.m.goofish.com, api.pinduoduo.com, api.yangkeduo.com, acs.m.taobao.com, heic.alicdn.com, guide-acs.m.taobao.com, poplayer.template.alibaba.com
 
