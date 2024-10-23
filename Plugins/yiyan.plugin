@@ -13,8 +13,8 @@ https://api.lianjiu.fun/app/api/v1/profile reject
 http-response ^https?:\/\/api\.revenuecat\.com\/v1\/(subscribers\/[^\/]+$|receipts$) script-path=https://raw.githubusercontent.com/bhcmht001/L00n/refs/heads/main/Scripts/revenuecat.js, requires-body=true, timeout=60, tag=Revenuecat
 http-request ^https?:\/\/api\.revenuecat\.com\/v1\/(subscribers\/[^\/]+$|receipts$) script-path=https://raw.githubusercontent.com/bhcmht001/L00n/refs/heads/main/Scripts/revenuecat.js, timeout=60, tag=Revenuecat
 
-http-response ^https:\/\/app\.yiyan\.art\/yiyan\/(?:checkpro|getuserinfoandbooklist|getvipproduct) script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/break/yiyan.js, requires-body=true, binary-body-mode = false, timeout=10, tag = 解锁本地会员
-http-response ^https:\/\/app\.yiyan\.art\/yiyan\/(?:getalltextcard|getuserinfoandbooklist) script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/break/yiyan.js, requires-body=true, binary-body-mode = false, timeout=10, tag = 移除会员横幅
+http-response ^https:\/\/app\.yiyan\.art\/yiyan\/(?:checkpro|getuserinfoandbooklist|getvipproduct) script-path=https://raw.githubusercontent.com/bhcmht001/L00n/refs/heads/main/Scripts/yiyan.js, requires-body=true, binary-body-mode = false, timeout=10, tag = 解锁本地会员
+http-response ^https:\/\/app\.yiyan\.art\/yiyan\/(?:getalltextcard|getuserinfoandbooklist) script-path=https://raw.githubusercontent.com/bhcmht001/L00n/refs/heads/main/Scripts/yiyan.js, requires-body=true, binary-body-mode = false, timeout=10, tag = 移除会员横幅
 
 http-response ^https:\/\/photos\.adobe\.io\/v2\/accounts* script-path=https://raw.githubusercontent.com/bhcmht001/L00n/refs/heads/main/Scripts/lr.js, requires-body=true, timeout=60, tag=lightroom
 [MITM]
