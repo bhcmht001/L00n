@@ -18,4 +18,4 @@ http-response ^https:\/\/app\.yiyan\.art\/yiyan\/(?:getalltextcard|getuserinfoan
 
 http-response ^https:\/\/photos\.adobe\.io\/v2\/accounts* script-path=https://raw.githubusercontent.com/bhcmht001/L00n/refs/heads/main/Scripts/lr.js, requires-body=true, timeout=60, tag=lightroom
 [MITM]
-hostname = app.yiyan.art, api.revenuecat.com, api.lianjiu.fun
+hostname = app.yiyan.art, api.revenuecat.com, api.lianjiu.fun,photos.adobe.io
