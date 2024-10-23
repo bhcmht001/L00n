@@ -16,13 +16,37 @@ DOMAIN, dns.jd.com, REJECT
 URL-REGEX, ^http:\/\/\w{32}\.jddebug\.com\/diagnose\?, REJECT
 IP-CIDR, 101.124.19.122/32, REJECT, no-resolve
 IP-CIDR6, 2402:db40:5100:1011::5/128, REJECT, no-resolve
+#美图秀秀
+AND,((DOMAIN-KEYWORD, -ad-), (DOMAIN-SUFFIX, byteimg.com)),REJECT
+AND,((DOMAIN-KEYWORD, -ttam-), (DOMAIN-SUFFIX, ibyteimg.com)),REJECT
+AND,((DOMAIN-KEYWORD, ssdk-), (DOMAIN-SUFFIX, pangle.io)),REJECT
+AND,((DOMAIN-KEYWORD, pangolin), (DOMAIN-SUFFIX, sgsnssdk.com)),REJECT
+AND,((DOMAIN-KEYWORD, pangolin), (DOMAIN-SUFFIX, sgsnssdk.com)),REJECT
 
+DOMAIN,adui.tg.meitu.com,REJECT
+DOMAIN,da.mosspf.com,REJECT
+DOMAIN,api.mosspf.com,REJECT
+DOMAIN-SUFFIX,union.baidu.com,REJECT
+DOMAIN,wn.pos.baidu.com,REJECT
+DOMAIN,wn.pos.baidu.com,REJECT
+DOMAIN,nadvideo2.baidu.com,REJECT
+DOMAIN,mobads.baidu.com,REJECT
+DOMAIN,mobads-pre-config.cdn.bcebos.com,REJECT
+DOMAIN,mobads-logs.baidu.com,REJECT
 [Rewrite]
 ^https:\/\/api\.m\.jd\.com\/client\.action\?functionId=(searchBoxWord|stationPullService|uniformRecommend[06]) reject-dict
 ^https:\/\/mp\.weixin\.qq\.com\/mp\/(cps_product_info|getappmsgad|jsmonitor|masonryfeed|relatedarticle)\? reject-dict
+#美图秀秀
+^https:\/\/api\.xiuxiu\.meitu\.com\/v\d\/common\/config\.json response-body-json-del data.home_top_live data.splashControl
+^https:\/\/(api|tool)\.xiuxiu\.meitu\.com\/v\d\/vip\/sub_popup\.json reject-dict
+^https:\/\/(api|tool)\.xiuxiu\.meitu\.com\/\/v\d\/vip\/popup_show\.json reject-dict
+^https:\/\/(api|tool)\.xiuxiu\.meitu\.com\/v\d\/tool\/common\/operation_icon\.json response-body-json-del data.home_top_icon
+^https:\/\/(api|tool)\.xiuxiu\.meitu\.com\/\/v\d\/vip\/popup_show\.json reject-dict
+^https:\/\/api\.posters\.meitu\.com\/common\/init\.json response-body-json-del data.vip
+^https:\/\/(api|tool)\.xiuxiu\.meitu\.com\/v\d\/tool\/common\/home\.json response-body-json-del data[0].items[10] data[1].scheme data[1].wallet_title data[1].items[1] data[1].items[1] data[2].items[1]
 
 [Script]
 http-response ^https:\/\/api\.m\.jd\.com\/client\.action\?functionId=(deliverLayer|getTabHomeInfo|myOrderInfo|orderTrackBusiness|personinfoBusiness|start|welcomeHome) script-path = https://raw.githubusercontent.com/bhcmht001/L00n/refs/heads/main/Scripts/jingdong.js, requires-body = true, tag = 移除京东广告
 
 [MitM]
-hostname = api.m.jd.com, mp.weixin.qq.com
+hostname = api.m.jd.com, mp.weixin.qq.com, api.xiuxiu.meitu.com, tool.xiuxiu.meitu.com, api.posters.meitu.com
